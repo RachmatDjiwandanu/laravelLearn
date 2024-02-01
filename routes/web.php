@@ -13,39 +13,21 @@ use App\Http\Controllers\ContactController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'tittle' => 'Home'
-    ]);
-});
 
-Route::get('/bio', function (){
-    return view ('biodata', [
-        'tittle' => 'Biodata'
-    ]);
-}
-);
-
-Route::get('/con', function (){
-    return view ('contact', [
-        'tittle' => 'Contact'
-    ]);
-}
-);
-
-Route::get('/abut', function (){
-    return view ('about', [
-        'tittle' => 'About'
-    ]);
-}
-);
-
-Route::get('/index', function (){
+Route::get('/', function (){
     return view ('template.index',[
         'tittle' => 'Index'
     ]);
 }
 );
 
-Route::get('/contact', [ContactController::class, 'index']);
-Route::post('/contact', [ContactController::class, 'store']);
+Route::get('/edit', function (){
+    return view ('template.edit',[
+        'tittle' => 'edit'
+    ]);
+}
+);
+Route::get('/template/contact', [ContactController::class, 'index'])->name('template.contact');
+Route::resource('/contact', ContactController::class,);
+Route::get('/contact/edit/{id}', [ContactController::class, 'edit'])->name('template.edit');
+Route::put('/contact/update/{id}', [ContactController::class, 'update'])->name('template.update');
