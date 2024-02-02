@@ -31,3 +31,4 @@ Route::get('/template/contact', [ContactController::class, 'index'])->name('temp
 Route::resource('/contact', ContactController::class,);
 Route::get('/contact/edit/{id}', [ContactController::class, 'edit'])->name('template.edit');
 Route::put('/contact/update/{id}', [ContactController::class, 'update'])->name('template.update');
+Route::delete('/contact/delete/{id}', [ContactController::class, 'destroy'])->name('template.delete');
